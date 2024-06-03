@@ -8,6 +8,13 @@ export default class DataBase {
   constructor() {
     this.connection = new Sequelize(`${NODE_ENV === 'test' ? DB_URI_TEST : DB_URI}`, {
       logging: false,
+      dialect: 'postgres',
+      ssl: true,
+      dialectOptions: {
+        ssl: {
+          require: true,
+        },
+      },
     });
   }
 
